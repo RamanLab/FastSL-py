@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<elimination-list>
+  <reaction-id>EX_ac_e</reaction-id>
+  <reaction-id>EX_acald_e</reaction-id>
+  <reaction-id>EX_akg_e</reaction-id>
+  <reaction-id>EX_co2_e</reaction-id>
+  <reaction-id>EX_etoh_e</reaction-id>
+  <reaction-id>EX_for_e</reaction-id>
+  <reaction-id>EX_fru_e</reaction-id>
+  <reaction-id>EX_fum_e</reaction-id>
+  <reaction-id>EX_glc__D_e</reaction-id>
+  <reaction-id>EX_gln__L_e</reaction-id>
+  <reaction-id>EX_glu__L_e</reaction-id>
+  <reaction-id>EX_h_e</reaction-id>
+  <reaction-id>EX_h2o_e</reaction-id>
+  <reaction-id>EX_lac__D_e</reaction-id>
+  <reaction-id>EX_mal__L_e</reaction-id>
+  <reaction-id>EX_nh4_e</reaction-id>
+  <reaction-id>EX_o2_e</reaction-id>
+  <reaction-id>EX_pi_e</reaction-id>
+  <reaction-id>EX_pyr_e</reaction-id>
+  <reaction-id>EX_succ_e</reaction-id>
+</elimination-list>
