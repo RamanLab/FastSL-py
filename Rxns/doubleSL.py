@@ -42,7 +42,7 @@ def _double_lethal_reactions_phase_1(model, cutoff, grWT, Jnz, eliIdx, delIdx_i)
                 filter(
                        lambda rxn_pair_idx: rxn_pair_idx is not None,
                        Parallel(n_jobs=1,
-                                backend='threading',
+                                backend='multiprocessing',
                                 verbose=0,
                                 batch_size='auto')(
                                 delayed(_double_lethal_reactions_phase_1_helper)
@@ -105,7 +105,7 @@ def doubleSL(model, cutoff, eliList, solver):
                      filter(
                             lambda rxn_pair_idx: rxn_pair_idx is not None,
                             Parallel(n_jobs=cpu_count(),
-                                     backend='threading',
+                                     backend='multiprocessing',
                                      verbose=3,
                                      batch_size=chunk_size_phase_1)(
                                      delayed(_double_lethal_reactions_phase_1)
