@@ -31,7 +31,6 @@ def _double_lethal_reactions_phase_1(model, cutoff, grWT, Jnz, eliIdx, delIdx_i)
 
 #         for delIdx_j in Jnz_i:
 #             with model:
-#                 model.reactions[delIdx_i].knock_out()
 #                 model.reactions[delIdx_j].knock_out()
 #                 solKO_ij = model.slim_optimize()
 #                 if solKO_ij < cutoff * grWT or \
@@ -39,19 +38,19 @@ def _double_lethal_reactions_phase_1(model, cutoff, grWT, Jnz, eliIdx, delIdx_i)
 #                     return [int(delIdx_i), int(delIdx_j)]
 #                 else:
 #                     return None
-        return list(
-                    filter(
-                           lambda rxn_pair_idx: rxn_pair_idx is not None,
-                           Parallel(n_jobs=1,
-                                    backend='threading',
-                                    verbose=0,
-                                    batch_size='auto')(
-                                    delayed(_double_lethal_reactions_phase_1_helper)
-                                    (model,
-                                     cutoff,
-                                     grWT,
-                                     delIdx_i,
-                                     delIdx_j) for delIdx_j in Jnz_i)))
+    return list(
+                filter(
+                       lambda rxn_pair_idx: rxn_pair_idx is not None,
+                       Parallel(n_jobs=1,
+                                backend='threading',
+                                verbose=0,
+                                batch_size='auto')(
+                                delayed(_double_lethal_reactions_phase_1_helper)
+                                (model,
+                                 cutoff,
+                                 grWT,
+                                 delIdx_i,
+                                 delIdx_j) for delIdx_j in Jnz_i)))
 
 
 def _double_lethal_reactions_phase_2(model, cutoff, grWT, Jnz_copy, delIdx_pair):
