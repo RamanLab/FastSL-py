@@ -35,8 +35,8 @@ def generate_elilist_xml_from_model(model):
                xml_declaration=True,
                pretty_print=True)
 
-    logging.info('{}_elimination_list.xml generated in {}'
-                 .format(model, os.getcwd()))
+    logging.info('%s_elimination_list.xml generated in %s',
+                 model, os.getcwd())
 
 
 def main():
