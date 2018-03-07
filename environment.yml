@@ -1,23 +1,10 @@
 name: FastSL-py
 channels:
-  - gurobi
-  - http://conda.anaconda.org/gurobi
   - defaults
 dependencies:
-  - anaconda=custom=py36ha4fed55_0
-  - ca-certificates=2017.08.26=ha1e5d58_0
-  - certifi=2018.1.18=py36_0
-  - openssl=1.0.2n=hdbc3d79_0
-  - pip=9.0.1=py36_5
-  - python=3.6.1=2
-  - readline=6.2=2
-  - setuptools=38.5.1=py36_0
-  - sqlite=3.13.0=0
-  - tk=8.5.18=0
-  - wheel=0.30.0=py36h5eb2c71_1
-  - xz=5.2.3=h0278029_2
-  - zlib=1.2.11=hf3cbc9b_2
-  - gurobi=7.5.2=py36_0 
+  - anaconda
+  - pip
+  - python=3.6.1
   - pip:
     - cobra==0.11.3
     - future==0.16.0
