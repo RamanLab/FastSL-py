@@ -168,9 +168,10 @@ def triple_sl(model, cutoff, eli_list, solver):
                         newnnz_ij = np.flatnonzero(sol_ko_ij.fluxes)
                         jnz_ij_before_filtering = np.setdiff1d(newnnz_ij,
                                                                jnz)
-                        jnz_ij = np.setdiff1d(jnz_ij_before_filtering,
-                                              eli_idx)
-
+                        jnz_ij_after_filtering = np.setdiff1d(jnz_ij_before_filtering,
+                                                              eli_idx)
+                        jnz_ij = np.setdiff1d(jnz_ij_after_filtering,
+                                              jsl_idx)
                         for del_idx_k in jnz_ij:
                             with model:
                                 model.reactions[del_idx_k].knock_out()
@@ -202,8 +203,10 @@ def triple_sl(model, cutoff, eli_list, solver):
                         # continue
                     newnnz_ij = np.flatnonzero(sol_ko_ij.fluxes)
                     jnz_ij_before_filtering = np.setdiff1d(newnnz_ij, jnz)
-                    jnz_ij = np.setdiff1d(jnz_ij_before_filtering, eli_idx)
-
+                    jnz_ij_after_filtering = np.setdiff1d(jnz_ij_before_filtering,
+                                                          eli_idx)
+                    jnz_ij = np.setdiff1d(jnz_ij_after_filtering,
+                                          jsl_idx)
                     for del_idx_k in jnz_ij:
                         with model:
                             model.reactions[del_idx_k].knock_out()
