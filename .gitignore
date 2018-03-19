@@ -10,5 +10,9 @@ __pycache__/
 *.py[cod]
 *$py.class
 
-# Gurobi logs
-gurobi.log
+# Logs
+*.log
+
+# Directories
+Models/Agora-1.02/
+Results/
