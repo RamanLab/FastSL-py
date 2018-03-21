@@ -52,7 +52,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
                        "reactions",
                        "single",
                        jsl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl:%s', len(jsl))
         # Order 2
         elif order == 2:
@@ -70,7 +70,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
                        "reactions",
                        "double",
                        jdl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl:%s\tJdl:%s', len(jsl), len(jdl))
         # Order 3
         # elif order == 3:
@@ -114,7 +114,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
                        "reactions",
                        "single",
                        jsl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl:%s', len(jsl))
         # Parallel order 2
         elif order == 2:
@@ -132,7 +132,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
                        "reactions",
                        "double",
                        jdl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl:%s\tJdl:%s',
                          len(jsl),
                          len(jdl))
@@ -198,7 +198,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
                        "genes",
                        "single",
                        jsl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('jsl genes:%s', len(jsl))
         # Order 2
         elif order == 2:
@@ -215,7 +215,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
                        "genes",
                        "double",
                        jdl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl genes:%s\tJdl genes:%s', len(jsl), len(jdl))
         # Order 3
         # elif order == 3:
@@ -258,7 +258,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
                        "genes",
                        "single",
                        jsl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl genes:%s', len(jsl))
         # Parallel order 2
         elif order == 2:
@@ -275,7 +275,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
                        "genes",
                        "double",
                        jdl)
-            logging.info('========== %s ==========')
+            logging.info('========== %s ==========', model.id)
             logging.info('Jsl genes:%s\tJdl genes:%s',
                          len(jsl),
                          len(jdl))
