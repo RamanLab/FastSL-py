@@ -1,5 +1,8 @@
 #!/bin/zsh
 
+# Takes a root directory which has the folders comprising of model and elimination list files
+# and generates the lethals sets
+
 ROOT_DIR=$1;
 
 for SUB_DIR in "$ROOT_DIR"/*
@@ -12,12 +15,14 @@ do
         else
             model="$MODEL_FILES"
         fi
-        
-        # run reactions
-        python fast_sl.py "$model" --elilist "$elilist" --solver $2 --parallel 1 --genes 0
-
-        # run genes
-        python fast_sl.py "$model" --solver $2 --parallel 1 --genes 1
-
     done
+    
+    # Change the parameter(s) as required
+    
+    # run reactions
+    python fast_sl.py "$model" --elilist "$elilist" --solver $2 --parallel 1 --genes 0
+    
+    # run genes
+    python fast_sl.py "$model" --solver $2 --parallel 1 --genes 1
+
 done
