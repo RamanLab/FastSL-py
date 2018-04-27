@@ -14,5 +14,4 @@ __pycache__/
 *.log
 
 # Directories
-Models/Agora-1.02/
 Results/

@@ -232,7 +232,7 @@ def triple_sl(model, cutoff, eli_list, solver):
                                                     int(del_idx_j),
                                                     int(del_idx_k)])
 
-    # Eliminate double lethal reaction deletions in triple lethal reacutions
+    # Eliminate double lethal reaction deletions in triple lethal reactions
     jdl_idx = np.array(jdl_idx)
     jtl_idx = np.array(jtl_idx)
 
@@ -250,7 +250,7 @@ def triple_sl(model, cutoff, eli_list, solver):
     jtl_idx_new = np.array(temporary)
     jtl_idx_final = np.unique(np.sort(jtl_idx_new), axis=0).tolist()
 
-    # # Indices -> Reactions
+    # Indices -> Reactions
     jdl_idx = jdl_idx.tolist()
     jdl = [model.reactions.get_by_any(rxn_pair_idx) for rxn_pair_idx
            in jdl_idx]
