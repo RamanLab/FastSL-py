@@ -40,7 +40,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
 
     # core handling
     if parallel == 0:
-        from fast_sl.single_core import single_sl, double_sl, triple_sl
+        from fast_sl.single_core import single_sl, double_sl
         # Order 1
         if order == 1:
             jsl = single_sl(model,
@@ -100,9 +100,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
     elif parallel == 1:
         from fast_sl.multi_core import (
                                         parallel_single_sl,
-                                        parallel_double_sl,
-                                        # parallel_triple_sl
-                                        )
+                                        parallel_double_sl)
         # Parallel order 1
         if order == 1:
             jsl = parallel_single_sl(model,
@@ -165,16 +163,6 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
 
 def fast_sl_genes(model_path, cutoff, order, solver, parallel):
     '''Identify synthetic lethal genes.'''
-    from fast_sl.single_core import (
-                                     single_sl_genes,
-                                     double_sl_genes,
-                                     # triple_sl_genes
-                                     )
-    from fast_sl.multi_core import (
-                                    parallel_single_sl_genes,
-                                    parallel_double_sl_genes,
-                                    # parallel_triple_sl_genes
-                                    )
     # model parsing
     model = cobra.io.read_sbml_model(model_path)
 
@@ -185,9 +173,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
     if parallel == 0:
         from fast_sl.single_core import (
                                          single_sl_genes,
-                                         double_sl_genes,
-                                         # triple_sl_genes
-                                         )
+                                         double_sl_genes)
         # Order 1
         if order == 1:
             jsl = single_sl_genes(model,
@@ -245,9 +231,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
     elif parallel == 1:
         from fast_sl.multi_core import (
                                         parallel_single_sl_genes,
-                                        parallel_double_sl_genes,
-                                        # parallel_triple_sl_genes
-                                        )
+                                        parallel_double_sl_genes)
         # Parallel order 1
         if order == 1:
             jsl = parallel_single_sl_genes(model,

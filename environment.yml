@@ -22,4 +22,5 @@ dependencies:
     - sympy==1.1.1
     - tabulate==0.8.2
     - tqdm==4.19.6
+    - pytest==3.5.1
 

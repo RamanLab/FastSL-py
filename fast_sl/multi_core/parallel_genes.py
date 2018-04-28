@@ -31,11 +31,12 @@ def _double_lethal_genes_phase_1_helper(model, cutoff, gr_wt, del_idx_i,
             return None
 
 
-def _double_lethal_genes_phase_1(model, cutoff, gr_wt, jnz, del_idx_i):
+def _double_lethal_genes_phase_1(model, solver_tol, cutoff, gr_wt,
+                                 jnz, del_idx_i):
     with model:
         model.genes[del_idx_i].knock_out()
         sol_ko_i = model.optimize()
-        newnnz = np.flatnonzero(sol_ko_i.fluxes)
+        newnnz = np.where(sol_ko_i.fluxes.abs() > solver_tol)[0]
         newnnz_rxns_genes_set = {model.reactions[rxn_idx].genes
                                  for rxn_idx in newnnz
                                  if model.reactions[rxn_idx]
@@ -77,13 +78,15 @@ def _double_lethal_genes_phase_2(model, cutoff, gr_wt, jnz_copy, del_idx_pair):
 
 
 def parallel_single_sl_genes(model, cutoff, solver):
-    ''' Analysis for single lethal genes.'''
+    '''Analysis for single lethal genes.'''
     model.solver = solver  # Basic solver configuration
     sol_wt = model.optimize()  # Identify minNorm flux distribution
     gr_wt = sol_wt.objective_value
 
+    solver_tol = model.solver.configuration.tolerances.optimality
+
     # Indices of non-zero flux genes including exchange/diffusion genes
-    jnz_rxns = np.flatnonzero(sol_wt.fluxes)
+    jnz_rxns = np.where(sol_wt.fluxes.abs() > solver_tol)[0]
     # set of the frozensets of genes associated with the jnz reactions
     # removes duplicates since set
     jnz_rxns_genes_set = {model.reactions[rxn_idx].genes
@@ -122,13 +125,15 @@ def parallel_single_sl_genes(model, cutoff, solver):
 
 
 def parallel_double_sl_genes(model, cutoff, solver):
-    ''' Analysis for double lethal genes '''
+    '''Analysis for double lethal genes.'''
     model.solver = solver  # Basic solver configuration
     sol_wt = model.optimize()  # Identify minNorm flux distribution
     gr_wt = sol_wt.objective_value
 
+    solver_tol = model.solver.configuration.tolerances.optimality
+
     # Indices of non-zero flux genes including exchange/diffusion genes
-    jnz_rxns = np.flatnonzero(sol_wt.fluxes)
+    jnz_rxns = np.where(sol_wt.fluxes.abs() > solver_tol)[0]
     # set of the frozensets of genes associated with the jnz reactions
     # removes duplicates since set
     jnz_rxns_genes_set = {model.reactions[rxn_idx].genes
@@ -166,6 +171,7 @@ def parallel_double_sl_genes(model, cutoff, solver):
                                      batch_size=chunk_size_phase_1)(
                                      delayed(_double_lethal_genes_phase_1)
                                      (model,
+                                      solver_tol,
                                       cutoff,
                                       gr_wt,
                                       jnz_rxns_genes_idx,

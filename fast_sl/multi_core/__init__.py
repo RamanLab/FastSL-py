@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 
+from __future__ import absolute_import
+
 from fast_sl.multi_core.parallel_rxns import (
                                               parallel_single_sl,
                                               parallel_double_sl

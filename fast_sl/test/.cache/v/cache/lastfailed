@@ -1,0 +1,4 @@
+{
+  "test_multi_core.py": true,
+  "test_single_core.py": true
+}

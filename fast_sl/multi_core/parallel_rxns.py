@@ -31,12 +31,12 @@ def _double_lethal_reactions_phase_1_helper(model, cutoff, gr_wt, del_idx_i,
             return None
 
 
-def _double_lethal_reactions_phase_1(model, cutoff, gr_wt, jnz, eli_idx,
-                                     del_idx_i):
+def _double_lethal_reactions_phase_1(model, solver_tol, cutoff, gr_wt,
+                                     jnz, eli_idx, del_idx_i):
     with model:
         model.reactions[del_idx_i].knock_out()
         sol_ko_i = model.optimize()
-        newnnz = np.flatnonzero(sol_ko_i.fluxes)
+        newnnz = np.where(sol_ko_i.fluxes.abs() > solver_tol)[0]
         jnz_i_before_filtering = np.setdiff1d(newnnz, jnz)
         jnz_i = np.setdiff1d(jnz_i_before_filtering, eli_idx)
 
@@ -77,8 +77,10 @@ def parallel_single_sl(model, cutoff, eli_list, solver):
     sol_wt = model.optimize()  # Identify minNorm flux distribution
     gr_wt = sol_wt.objective_value
 
+    solver_tol = model.solver.configuration.tolerances.optimality
+
     # Indices of non-zero flux reactions including exchange/diffusion reactions
-    jnz_before_filtering = np.flatnonzero(sol_wt.fluxes)
+    jnz_before_filtering = np.where(sol_wt.fluxes.abs() > solver_tol)[0]
 
     # Indices of exchange/diffusion reactions (not considered)
     eli_idx = [model.reactions.index(reaction_id) for reaction_id in eli_list]
@@ -116,8 +118,10 @@ def parallel_double_sl(model, cutoff, eli_list, solver):
     sol_wt = model.optimize()  # Identify minNorm flux distribution
     gr_wt = sol_wt.objective_value
 
+    solver_tol = model.solver.configuration.tolerances.optimality
+
     # Indices of non-zero flux reactions including exchange/diffusion reactions
-    jnz_before_filtering = np.flatnonzero(sol_wt.fluxes)
+    jnz_before_filtering = np.where(sol_wt.fluxes.abs() > solver_tol)[0]
 
     # Indices of exchange/diffusion reactions (not considered)
     eli_idx = [model.reactions.index(reaction_id) for reaction_id in eli_list]
@@ -150,6 +154,7 @@ def parallel_double_sl(model, cutoff, eli_list, solver):
                                      batch_size=chunk_size_phase_1)(
                                      delayed(_double_lethal_reactions_phase_1)
                                      (model,
+                                      solver_tol,
                                       cutoff,
                                       gr_wt,
                                       jnz,
