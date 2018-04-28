@@ -72,31 +72,7 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
                        jdl)
             logging.info('========== %s ==========', model.id)
             logging.info('Jsl:%s\tJdl:%s', len(jsl), len(jdl))
-        # Order 3
-        # elif order == 3:
-        #     jsl, jdl, jtl = triple_sl(model,
-        #                               cutoff,
-        #                               elilist_data,
-        #                               solver)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "single",
-        #                jsl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "double",
-        #                jdl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "triple",
-        #                jtl)
-        #     logging.info('Jsl:%s\tJdl:%s\tJtl:%s',
-        #                  len(jsl),
-        #                  len(jdl),
-        #                  len(jtl))
+
     elif parallel == 1:
         from fast_sl.multi_core import (
                                         parallel_single_sl,
@@ -134,31 +110,6 @@ def fast_sl(model_path, cutoff, order, atpm, solver, parallel, elilist=None):
             logging.info('Jsl:%s\tJdl:%s',
                          len(jsl),
                          len(jdl))
-        # Parallel order 3
-        # elif order == 3:
-        #     jsl, jdl, jtl = parallel_triple_sl(model,
-        #                                        cutoff,
-        #                                        elilist_data,
-        #                                        solver)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "single",
-        #                jsl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "double",
-        #                jdl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "reactions",
-        #                "triple",
-        #                jtl)
-        #     logging.info('jsl:%s\tjdl:%s\tjtl:%s',
-        #                 len(jsl),
-        #                 len(jdl),
-        #                 len(jtl))
 
 
 def fast_sl_genes(model_path, cutoff, order, solver, parallel):
@@ -203,31 +154,7 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
                        jdl)
             logging.info('========== %s ==========', model.id)
             logging.info('Jsl genes:%s\tJdl genes:%s', len(jsl), len(jdl))
-        # Order 3
-        # elif order == 3:
-        #     jsl, jdl, jtl = triple_sl_genes(model,
-        #                                     cutoff,
-        #                                     elilist_data,
-        #                                     solver)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "single",
-        #                jsl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "double",
-        #                jdl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "triple",
-        #                jtl)
-        #     logging.info('jsl genes:%s\tjdl genes:%s\tjtl genes:%s',
-        #                 len(jsl),
-        #                 len(jdl),
-        #                 len(jtl))
+
     elif parallel == 1:
         from fast_sl.multi_core import (
                                         parallel_single_sl_genes,
@@ -263,30 +190,6 @@ def fast_sl_genes(model_path, cutoff, order, solver, parallel):
             logging.info('Jsl genes:%s\tJdl genes:%s',
                          len(jsl),
                          len(jdl))
-        # Parallel order 3
-        # elif order == 3:
-        #     jsl, jdl, jtl = parallel_triple_sl_genes(model,
-        #                                              cutoff,
-        #                                              solver)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "single",
-        #                jsl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "double",
-        #                jdl)
-        #     write_file(results_dir_path,
-        #                model.id,
-        #                "genes",
-        #                "triple",
-        #                jtl)
-        #     logging.info('jsl genes:%s\tjdl genes:%s\tjtl genes:%s',
-        #                 len(jsl),
-        #                 len(jdl),
-        #                 len(jtl))
 
 
 def main():
