@@ -1,6 +1,9 @@
 FastSL-py
 =========
 
+.. image:: https://travis-ci.org/RamanLab/FastSL-py.svg?branch=master
+    :target: https://travis-ci.org/RamanLab/FastSL-py
+
 This is the Python implementation of FastSL, an efficient algorithm to
 identify synthetic lethal gene/reaction sets in genome-scale metabolic
 models.
