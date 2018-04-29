@@ -17,8 +17,8 @@ Basic requirement(s):
 
 ::
 
-    - Python 3.6 for Gurobi 8 (conda distribution recommended)
-    - Python 3.5 for IBM CPLEX and Gurobi 7 (conda distribution recommended)
+    - Python 3.6 for Gurobi 8
+    - Python 3.5 for IBM CPLEX and Gurobi 7
 
 Installation:
 -------------
@@ -33,7 +33,7 @@ In case you downloaded the source code from GitHub:
 
 ::
 
-    pip install -e .
+    python setup.py install
 
 Usage:
 ------

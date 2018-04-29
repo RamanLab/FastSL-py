@@ -2,6 +2,7 @@
 
 from __future__ import absolute_import
 
+from os.path import abspath, dirname, join
 
 import cobra
 
@@ -10,8 +11,9 @@ from fast_sl.single_core.genes import (
                                        single_sl_genes,
                                        double_sl_genes)
 
-
-model = cobra.io.read_sbml_model('models/stock/e_coli_core/e_coli_core.xml')
+model_dir_path = abspath(join(dirname(abspath(__file__)), "models", "stock",
+                              "e_coli_core", "e_coli_core.xml"))
+model = cobra.io.read_sbml_model(model_dir_path)
 elilist = model.exchanges
 
 

@@ -26,6 +26,9 @@ setup(
                  "metabolic models."),
     long_description=readme(),
     url='https://github.com/RamanLab/FastSL-py',
+    entry_points={
+        'console_scripts': ['fast-sl=fast_sl.fast_sl:main']
+    },
     author='',
     author_email='',
     license="LGPL/GPL v2+",
