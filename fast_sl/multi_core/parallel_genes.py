@@ -52,7 +52,7 @@ def _double_lethal_genes_phase_1(model, solver_tol, cutoff, gr_wt,
                 filter(
                        lambda rxn_pair_idx: rxn_pair_idx is not None,
                        Parallel(n_jobs=1,
-                                backend='threading',
+                                backend='multiprocessing',
                                 verbose=5,
                                 batch_size='auto')(
                                 delayed(_double_lethal_genes_phase_1_helper)
@@ -105,7 +105,7 @@ def parallel_single_sl_genes(model, cutoff, solver):
     jsl_genes_idx = list(
                    filter(
                           lambda rxn_idx: rxn_idx is not None,
-                          Parallel(n_jobs=cpu_count(),
+                          Parallel(n_jobs=4,
                                    # threading performs better than
                                    # multiprocessing in only deletions
                                    backend='threading',
@@ -165,7 +165,7 @@ def parallel_double_sl_genes(model, cutoff, solver):
     jdl_idx_1 = list(
                      filter(
                             lambda rxn_pair_idx: rxn_pair_idx is not None,
-                            Parallel(n_jobs=cpu_count(),
+                            Parallel(n_jobs=4,
                                      backend='multiprocessing',
                                      verbose=5,
                                      batch_size=chunk_size_phase_1)(
@@ -182,7 +182,7 @@ def parallel_double_sl_genes(model, cutoff, solver):
     jdl_idx_2 = list(
                      filter(
                             lambda rxn_idx: rxn_idx is not None,
-                            Parallel(n_jobs=cpu_count(),
+                            Parallel(n_jobs=4,
                                      backend='threading',
                                      verbose=5,
                                      batch_size=chunk_size_phase_2)(

@@ -94,7 +94,7 @@ def parallel_single_sl(model, cutoff, eli_list, solver):
     jsl_idx = list(
                    filter(
                           lambda rxn_idx: rxn_idx is not None,
-                          Parallel(n_jobs=cpu_count(),
+                          Parallel(n_jobs=4,
                                    # threading performs better than
                                    # multiprocessing in only deletions
                                    backend='threading',
@@ -148,7 +148,7 @@ def parallel_double_sl(model, cutoff, eli_list, solver):
     jdl_idx_1 = list(
                      filter(
                             lambda rxn_pair_idx: rxn_pair_idx is not None,
-                            Parallel(n_jobs=cpu_count(),
+                            Parallel(n_jobs=4,
                                      backend='multiprocessing',
                                      verbose=5,
                                      batch_size=chunk_size_phase_1)(
@@ -166,7 +166,7 @@ def parallel_double_sl(model, cutoff, eli_list, solver):
     jdl_idx_2 = list(
                      filter(
                             lambda rxn_idx: rxn_idx is not None,
-                            Parallel(n_jobs=cpu_count(),
+                            Parallel(n_jobs=4,
                                      backend='threading',
                                      verbose=5,
                                      batch_size=chunk_size_phase_2)(
