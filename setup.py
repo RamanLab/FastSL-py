@@ -6,8 +6,9 @@ from setuptools import setup
 
 
 def readme():
-    with open('README.rst') as f:
-        return f.read()
+    with open('README.rst') as file:
+        return file.read()
+
 
 setup(
     name="fast_sl",
@@ -31,7 +32,7 @@ setup(
     },
     author='',
     author_email='',
-    license="LGPL/GPL v2+",
+    license="GPL v3",
     keywords=("synthetic lethals flux balance analysis linear programming"
               "computational systems biology"),
     packages=['fast_sl'],
