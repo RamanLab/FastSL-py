@@ -4,6 +4,8 @@ from __future__ import absolute_import
 
 from setuptools import setup
 
+import fast_sl
+
 
 def readme():
     with open('README.rst') as file:
@@ -12,7 +14,7 @@ def readme():
 
 setup(
     name="fast_sl",
-    version='0.1.0',
+    version=fast_sl.__version__,
     install_requires=[
         "cobra",
         "joblib",
@@ -21,14 +23,13 @@ setup(
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],
-    test_suite="fast_sl.test.suite",
     description=("FastSL-py is an efficient algorithm to identify "
                  "synthetic lethal gene/reaction sets in genome-scale "
                  "metabolic models."),
     long_description=readme(),
     url='https://github.com/RamanLab/FastSL-py',
     entry_points={
-        'console_scripts': ['fast-sl=fast_sl.fast_sl:main']
+        'console_scripts': ['fast-sl=fast_sl_cli:main']
     },
     author='',
     author_email='',
@@ -37,4 +38,4 @@ setup(
               "computational systems biology"),
     packages=['fast_sl'],
     platforms="GNU/Linux, macOS >= 10.7, Microsoft Windows >= 7",
-    zip_safe=False)
+)

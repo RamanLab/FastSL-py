@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 def generate_dir(model_name, of_type):
     '''Generate the required directory for output'''
-    dir_path = Path('Results/{}/{}'.format(model_name, of_type))
+    dir_path = Path.cwd() / 'fast-sl-results/{}/{}'.format(model_name, of_type)
     dir_path.mkdir(parents=True, exist_ok=True)
 
     logger.info('%s generated.', str(dir_path.resolve()))
