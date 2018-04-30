@@ -4,7 +4,7 @@ from __future__ import absolute_import
 
 from setuptools import setup
 
-import fast_sl
+import fastsl
 
 
 def readme():
@@ -13,13 +13,14 @@ def readme():
 
 
 setup(
-    name="fast_sl",
-    version=fast_sl.__version__,
+    name="fastsl",
+    version=fastsl.__version__,
     install_requires=[
         "cobra",
         "joblib",
         "tqdm",
-        "lxml"
+        "lxml",
+        "Click"
     ],
     setup_requires=["pytest-runner"],
     tests_require=["pytest"],
@@ -28,14 +29,27 @@ setup(
                  "metabolic models."),
     long_description=readme(),
     url='https://github.com/RamanLab/FastSL-py',
-    entry_points={
-        'console_scripts': ['fast-sl=fast_sl_cli:main']
-    },
-    author='',
-    author_email='',
+    entry_points='''
+        [console_scripts]
+        fast-sl=cli:main
+    ''',
+    author='Synchon Mandal, Karthik Raman',
+    author_email='kraman@iitm.ac.in',
+    maintainer='Synchon Mandal',
+    maintainer_email='synchonmandal@gmail.com',
     license="GPL v3",
-    keywords=("synthetic lethals flux balance analysis linear programming"
+    include_package_data=True,
+    zip_safe=False,
+    keywords=("synthetic lethals flux balance analysis linear programming "
               "computational systems biology"),
-    packages=['fast_sl'],
+    packages=['fastsl'],
     platforms="GNU/Linux, macOS >= 10.7, Microsoft Windows >= 7",
+    classifiers=[
+        'Development Status :: 4 - Beta',
+        'Environment :: Console',
+        'License :: OSI Approved :: GNU General Public License v3',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Topic :: Scientific/Engineering :: Bio-Informatics'
+    ]
 )

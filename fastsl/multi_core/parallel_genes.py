@@ -53,7 +53,7 @@ def _double_lethal_genes_phase_1(model, solver_tol, cutoff, gr_wt,
                        lambda rxn_pair_idx: rxn_pair_idx is not None,
                        Parallel(n_jobs=1,
                                 backend='multiprocessing',
-                                verbose=5,
+                                verbose=0,
                                 batch_size='auto')(
                                 delayed(_double_lethal_genes_phase_1_helper)
                                 (model,
