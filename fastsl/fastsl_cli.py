@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 import logging
@@ -91,7 +92,7 @@ def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
                    xml_declaration=True,
                    pretty_print=True)
 
-        logging.info('%s_elimination_list.xml generated in Models', model)
+        logging.info('%s_elimination_list.xml generated.', model)
     # performs fast-sl
     else:
         # directory creation based on whether input is reactions/genes
@@ -121,7 +122,7 @@ def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
 
         # serial/parallel handling for reactions
         if parallel is False and genes is False:
-            from fastsl.single_core import single_sl, double_sl
+            from fastsl.rxns import single_sl, double_sl
             # Order 1
             if order == 1:
                 jsl = single_sl(model,
@@ -155,7 +156,7 @@ def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
                 logging.info('Jsl:%s\tJdl:%s', len(jsl), len(jdl))
 
         elif parallel is True and genes is False:
-            from fastsl.multi_core import (
+            from fastsl.parallel_rxns import (
                 parallel_single_sl,
                 parallel_double_sl)
             # Parallel order 1
@@ -194,9 +195,7 @@ def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
 
         # serial/parallel handling for genes
         if parallel is False and genes is True:
-            from fastsl.single_core import (
-                single_sl_genes,
-                double_sl_genes)
+            from fastsl.genes import single_sl_genes, double_sl_genes
             # Order 1
             if order == 1:
                 jsl = single_sl_genes(model,
@@ -228,7 +227,7 @@ def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
                 logging.info('Jsl genes:%s\tJdl genes:%s', len(jsl), len(jdl))
 
         elif parallel is True and genes is True:
-            from fastsl.multi_core import (
+            from fastsl.parallel_genes import (
                 parallel_single_sl_genes,
                 parallel_double_sl_genes)
             # Parallel order 1

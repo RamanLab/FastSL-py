@@ -1,5 +1,4 @@
 include README.rst
 include LICENSE
-include fastsl_cli.py
 exclude tests
 exclude docs
