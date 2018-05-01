@@ -4,10 +4,8 @@ from os.path import abspath, dirname, join
 
 import cobra
 
-from fast_sl.single_core.rxns import single_sl, double_sl
-from fast_sl.single_core.genes import (
-    single_sl_genes,
-    double_sl_genes)
+from fastsl.rxns import single_sl, double_sl
+from fastsl.genes import single_sl_genes, double_sl_genes
 
 MODEL_DIR_PATH = abspath(join(dirname(abspath(__file__)), "models", "stock",
                               "e_coli_core", "e_coli_core.xml"))

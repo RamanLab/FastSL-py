@@ -4,10 +4,8 @@ from os.path import abspath, dirname, join
 
 import cobra
 
-from fast_sl.multi_core import (
-    parallel_single_sl,
-    parallel_double_sl)
-from fast_sl.multi_core.parallel_genes import (
+from fastsl.parallel_rxns import parallel_single_sl, parallel_double_sl
+from fastsl.parallel_genes import (
     parallel_single_sl_genes,
     parallel_double_sl_genes)
 
