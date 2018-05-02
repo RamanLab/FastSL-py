@@ -8,6 +8,7 @@ environment:
     - PYTHON: "C:\\Python36-x64"
 
 install:
+  - "%PYTHON%\\python.exe -m pip install --upgrade pip"
   - "%PYTHON%\\python.exe -m pip install wheel"
 
 build: off
@@ -17,6 +18,8 @@ test_script:
 
 after_test:
   - "%PYTHON%\\python.exe setup.py bdist_wheel"
+  - "%PYTHON%\\python.exe setup.py bdist_wininst"
+  - "%PYTHON%\\python.exe setup.py bdist_msi"
 
 artifacts:
   - path: dist\*

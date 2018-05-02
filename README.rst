@@ -4,6 +4,11 @@ FastSL-py
 .. image:: https://travis-ci.org/RamanLab/FastSL-py.svg?branch=master
     :target: https://travis-ci.org/RamanLab/FastSL-py
 
+.. image:: https://readthedocs.org/projects/fastsl-py/badge/?version=latest
+    :target: http://fastsl-py.readthedocs.io/?badge=latest
+    :alt: Documentation Status
+
+
 This is the Python implementation of FastSL, an efficient algorithm to
 identify synthetic lethal gene/reaction sets in genome-scale metabolic
 models.
@@ -12,8 +17,7 @@ This package is based on
 `cobrapy <https://github.com/opencobra/cobrapy>`__ and provides a simple
 command-line tool.
 
-If you use FastSL-py in your work, please do cite:
-doi:10.1093/bioinformatics/btv352
+For documentation, please visit: `<http://fastsl-py.readthedocs.io>`
 
 Basic requirement(s):
 ---------------------
@@ -30,29 +34,23 @@ Use pip to install from PyPI (recommended inside a virtual environment):
 
 ::
 
-    pip install fast_sl
+    pip install fastsl
 
-In case you downloaded the source code from GitHub:
+Contribute:
+-----------
 
-::
+- Issue Tracker: `<https://github.com/RamanLab/FastSL-py/issues>`
 
-    python setup.py install
+Support:
+--------
 
-Usage:
-------
+If you are having issues, please let us know.
+Contact us at: <fast-sl@ramanlab.groups.io>
 
--  **Running FastSL-py on a COBRA model (.xml file)**: In a terminal,
-   run
-   ``python fast_sl.py '<model.xml>' --elilist '<model_elimination_list.xml>'``.
+License:
+--------
 
--  **Running FastSL-py genes on E.coli iAF1260**: Use the ``--genes 1``
-   flag.
-
--  **Running the parallel version**: Use the ``--parallel 1`` flag.
-
--  **Generating elimination list**: Use the ``--gen_elilist True`` flag.
-
--  **For help**: Use the ``-h`` flag.
+The project is licensed under GPL v3 license.
 
 Note:
 -----

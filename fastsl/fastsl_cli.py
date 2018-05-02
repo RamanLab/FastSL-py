@@ -56,7 +56,7 @@ def write_file(in_dir, model_name, of_type, lethality_stage, data):
               help='parallel version')
 @click.option('--genes', is_flag=True, default=False,
               help='fast-sl genes')
-@click.option('--gen_elilist', is_flag=True, default=False,
+@click.option('--gen-elilist', is_flag=True, default=False,
               help='generates the elimination list for the model')
 @click.argument('model')
 def main(model, cutoff, order, elilist, atpm, solver, parallel, genes,
