@@ -17,7 +17,7 @@ This package is based on
 `cobrapy <https://github.com/opencobra/cobrapy>`__ and provides a simple
 command-line tool.
 
-For documentation, please visit: `<http://fastsl-py.readthedocs.io>`
+For documentation, please visit: `http://fastsl-py.readthedocs.io`
 
 Basic requirement(s):
 ---------------------
