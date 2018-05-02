@@ -3,6 +3,11 @@ FastSL-py
 
 .. image:: https://travis-ci.org/RamanLab/FastSL-py.svg?branch=master
     :target: https://travis-ci.org/RamanLab/FastSL-py
+    :alt: Travis CI Status
+
+.. image::  https://ci.appveyor.com/api/projects/status/d97plfb60bcic5ar?svg=true
+    :target: https://ci.appveyor.com/project/synchon/fastsl-py
+    :alt: AppVeyor CI Status
 
 .. image:: https://readthedocs.org/projects/fastsl-py/badge/?version=latest
     :target: http://fastsl-py.readthedocs.io/?badge=latest
