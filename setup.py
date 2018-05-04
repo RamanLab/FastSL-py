@@ -38,7 +38,7 @@ setup(
         fast-sl=fastsl.fastsl_cli:main
     ''',
     author='Synchon Mandal, Karthik Raman',
-    author_email='kraman@iitm.ac.in',
+    author_email='fast-sl@ramanlab.groups.io',
     maintainer='Synchon Mandal',
     maintainer_email='synchonmandal@gmail.com',
     license='GPL v3',
@@ -53,6 +53,7 @@ setup(
         'Intended Audience :: Science/Research',
         'Topic :: Scientific/Engineering :: Bio-Informatics',
         'Environment :: Console',
+        'License :: OSI Approved :: GNU General Public License v3 or later (GPLv3+)',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6'
