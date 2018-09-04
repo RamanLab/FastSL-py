@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-'''Contains functions to identify single synthetic lethal reactions.'''
+'''Contains functions to identify synthetic lethal reactions.'''
 
 import math
 from itertools import product
@@ -46,7 +46,7 @@ def single_reactions(model, elilist, cutoff=0.01, **kwargs):
 
     jnz = np.setdiff1d(jnz_before_filtering, eli_idx)
 
-    # Identify Single Lethal Reaction Deletions
+    # Identify Single Lethal Reactions
     jsl_idx = []
 
     for i in tqdm(jnz, desc="Identifying single lethal reactions:"):
@@ -101,7 +101,7 @@ def double_reactions(model, elilist, cutoff=0.01, **kwargs):
     # Identify single lethal reactions
     jsl = single_reactions(model, elilist, cutoff, solver=solver)
 
-    # Indices of single lethal reacions
+    # Indices of single lethal reactions
     jsl_idx = [model.reactions.index(jsl_id) for jsl_id in jsl]
 
     jnz_minus_jsl = np.setdiff1d(jnz, jsl_idx)
@@ -110,7 +110,7 @@ def double_reactions(model, elilist, cutoff=0.01, **kwargs):
     jnz_minus_jsl_phase_2 = [rxn_pair for rxn_pair in product(jnz_minus_jsl,
                                                               repeat=2)]
 
-    # Identify double lethal reactions
+    # Identify Double Lethal Reactions
     jdl_idx = []
 
     # Phase 1:

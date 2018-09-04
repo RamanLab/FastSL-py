@@ -52,7 +52,7 @@ def single_genes(model, cutoff=0.01, **kwargs):
                                              jnz_rxns_genes_set
                                              for genes in single_frozenset]))
 
-    # Identify Single Lethal Gene Deletions
+    # Identify Single Lethal Genes
     jsl_genes_idx = []
 
     for i in tqdm(jnz_rxns_genes_idx,
@@ -123,7 +123,7 @@ def double_genes(model, cutoff=0.01, **kwargs):
     jnz_minus_jsl_phase_2 = [gene_pair for gene_pair in product(jnz_minus_jsl,
                                                            repeat=2)]
 
-    # Identify double lethal reactions
+    # Identify Double Lethal Genes
     jdl_genes_idx = []
 
     # Phase 1:
