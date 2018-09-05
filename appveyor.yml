@@ -1,26 +1,27 @@
+build: false
+
 environment:
-
   matrix:
+    - PYTHON_VERSION: 3.5
+      MINICONDA: C:\Miniconda3
 
-    - PYTHON: "C:\\Python35"
-    - PYTHON: "C:\\Python35"
-    - PYTHON: "C:\\Python35-x64"
-    - PYTHON: "C:\\Python36-x64"
+    - PYTHON_VERSION: 3.6
+      MINICONDA: C:\Miniconda3
+
+    - PYTHON_VERSION: 3.7
+      MINICONDA: C:\Miniconda3
+
+init:
+  - "ECHO %PYTHON_VERSION% %MINICONDA%"
 
 install:
-  - "%PYTHON%\\python.exe -m pip install --upgrade pip"
-  - "%PYTHON%\\python.exe -m pip install wheel"
-
-build: off
+  - "set PATH=%MINICONDA%;%MINICONDA%\\Scripts;%PATH%"
+  - conda config --set always_yes yes --set changeps1 no
+  - conda update -q conda
+  - conda info -a
+  - "conda create -q -n fast-sl python=%PYTHON_VERSION%"
+  - activate fast-sl
+  - pip install cobra
 
 test_script:
-  - "%PYTHON%\\python.exe setup.py test"
-
-after_test:
-  - "%PYTHON%\\python.exe setup.py bdist_wheel"
-  - "%PYTHON%\\python.exe setup.py bdist_wininst"
-  - "%PYTHON%\\python.exe setup.py bdist_msi"
-
-artifacts:
-  - path: dist\*
-
+  - pytest
