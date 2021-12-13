@@ -1,7 +1,7 @@
 cobra==0.11.3
 future==0.16.0            # via cobra
 joblib==0.11
-lxml==4.6.3
+lxml==4.6.5
 mpmath==1.0.0             # via sympy
 numpy==1.14.3             # via cobra, pandas
 optlang==1.4.1            # via cobra
