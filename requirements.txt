@@ -3,7 +3,7 @@ future==0.16.0            # via cobra
 joblib==0.11
 lxml>=4.6.5
 mpmath==1.0.0             # via sympy
-numpy==1.14.3             # via cobra, pandas
+numpy>=1.21               # via cobra, pandas
 optlang==1.4.1            # via cobra
 pandas==0.22.0            # via cobra
 python-dateutil==2.7.2    # via pandas
