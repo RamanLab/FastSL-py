@@ -1,6 +1,6 @@
 cobra==0.11.3
 future==0.16.0            # via cobra
-joblib==0.11
+joblib==1.2.0
 lxml>=4.6.5
 mpmath==1.0.0             # via sympy
 numpy>=1.21               # via cobra, pandas
